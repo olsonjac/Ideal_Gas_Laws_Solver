@@ -64,6 +64,14 @@ for index, value in enumerate(m_data):
         pressure = float(m_data[index - 1])
         print("pressure is equal to", pressure, "atm")
         break
+    if value == "kPa":
+        pressure = float(m_data[index - 1]) / kPa
+        print("pressure is equal to", pressure, "atm")
+        break
+    if value == "mmHg":
+        pressure = float(m_data[index - 1]) / 760
+        print("pressure is equal to", pressure, "atm")
+        break
     else:
         pressure = 0
 

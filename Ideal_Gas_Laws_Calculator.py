@@ -14,7 +14,7 @@ kPa = 101.3
 punctuation = '''!()-[]{};:'"\, <>/?@#$%^&*_~'''
 
 #this asks the user to paste their question into the console.
-text = input("Paste the Ideal Gas Law problem here that you want answered *(Make sure there are no punctuation marks attached to the units for each variable)" )
+text = input("Paste the Ideal Gas Law problem here that you want answered" )
 
 #This block removes any extraneous punctuation that would stop the script from identifying variables
 emptyString = " "

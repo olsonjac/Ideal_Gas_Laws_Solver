@@ -98,6 +98,6 @@ def solver():
     if temperature == 0:
         print("The answer is", (pressure * volume) /(R * moles), "Kelvin")
        
-    else:  
+    if volume == 0:  
         print("The answer is",(moles * R * temperature) / (pressure),"Liters")
 solver()    

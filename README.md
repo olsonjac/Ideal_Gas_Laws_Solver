@@ -3,3 +3,5 @@ This repository hosts the script that I wrote to solve word problems that are pa
 
 This script will take a text that is copied and pasted into the console and parse it out to find the correct values to assign to the corresponding variables from the formula listed above.
 
+It will then solve for the missing variable.
+

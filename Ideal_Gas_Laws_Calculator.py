@@ -100,8 +100,8 @@ def calculator():
   time.sleep(1.5)
 #This function checks for the single missing variable and then solves for it algebraically.        
   def solver():
-#      if moles == 0:
-#          print("The answer is" ,(pressure * volume) / (R * temperature), "moles.")
+      if moles == 0:
+          print("The answer is" ,(pressure * volume) / (R * temperature), "moles.")
       if pressure == 0:
           print("The answer is", (moles * R * temperature) / volume, "atm")
       elif temperature == 0:

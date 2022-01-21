@@ -1,5 +1,5 @@
 ### Ideal Gas law solver program. 
-# Pressure x Volume = moles x R x Temperature
+# Pressure x Volume = moles x Rydberg's Constant x Temperature
 
 # Example Problem: What volume of CO2 is needed to fill an 0.5 moles tank to a pressure of 150.0 atm at 27.0 Celsius? 
 # Example 2: If I have 4 moles of gas at a pressure of 5.6 atm and a volume of 12 Liters, what is the temperature?

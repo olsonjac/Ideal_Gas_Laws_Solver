@@ -5,3 +5,10 @@ This script will take a text that is copied and pasted into the console and pars
 
 It will then solve for the missing variable.
 
+## Running Tests
+Install `pytest` and run the test suite from the repository root:
+
+```bash
+pytest
+```
+

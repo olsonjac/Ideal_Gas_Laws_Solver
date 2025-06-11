@@ -69,7 +69,7 @@ def calculator():
   text = input("(Units can be written with or without a space, e.g. 23C or 23 C)" )
 
   # allow units to be attached to numbers, e.g. "23C" or "150atm"
-  unit_pattern = r"(\d+(?:\.\d+)?)(°C|C|Celsius|K|Kelvin|L|Liters|mL|milliliters|atm|atmospheres|moles|mol|g|grams)"
+  unit_pattern = r"(\d+(?:\.\d+)?)(°C|C|Celsius|K|Kelvin|L|Liters|liter|mL|milliliters|atm|atmospheres|moles|mol|g|grams|kg|kilograms)"
   text = re.sub(unit_pattern, r"\1 \2", text)
 
 #This block removes any extraneous punctuation that would stop the script from identifying variables
@@ -79,6 +79,8 @@ def calculator():
 
 #this function splits the pasted question into individual objects in a list.
   m_data = text.split()
+  lower_tokens = [token.lower() for token in m_data]
+  gas_symbol_lower = {k.lower(): v for k, v in gas_symbol.items()}
 
   # Initialize variables in case they aren't found in the text
   volume = 0
@@ -91,11 +93,12 @@ def calculator():
 #The list is then searched for the corresponding units for each variable
 #the integer values are then assigned to the corresponding variables which are found one index behind the units.
   for index, value in enumerate(m_data):
-      if value == "L" or value == "Liters":
+      val = value.lower()
+      if val in ("l", "liter", "liters"):
           volume = float(m_data[index - 1])
           print("volume is equal to", volume, "Liters")
           break
-      if value == "mL" or value == "milliliters":
+      if val in ("ml", "milliliters"):
           volume = float(m_data[index - 1]) / 1000
           print("volume is equal to", volume, "Liters")
           break
@@ -103,11 +106,12 @@ def calculator():
   time.sleep(1.5)
 #This looks for the temperature value and converts accordingly to Kelvin
   for index, value in enumerate(m_data):
-      if value == "°C" or value == "Celsius" or value == "C":
+      val = value.lower()
+      if val in ("°c", "celsius", "c"):
           temperature = float(m_data[index - 1]) + k
           print("temperature is equal to", temperature, "Kelvin")
           break
-      if value == "K" or value == "Kelvin":
+      if val in ("k", "kelvin"):
           temperature = float(m_data[index - 1])
           print("temperature is equal to", temperature, "Kelvin")
           break
@@ -115,7 +119,8 @@ def calculator():
   time.sleep(1.5)        
 #Identifies pressure value and converts to atm.
   for index, value in enumerate(m_data):
-      if value == "atm" or value == "atmospheres":
+      val = value.lower()
+      if val in ("atm", "atmospheres"):
           pressure = float(m_data[index - 1])
           print("pressure is equal to", pressure, "atm")
           break
@@ -123,17 +128,26 @@ def calculator():
   time.sleep(1.5)
 
 # identifies the moles value and assigns it to the corresponding variable
+  gas_name = None
+  for key_lower in gas_symbol_lower:
+      if key_lower in lower_tokens:
+          gas_name = key_lower
+          break
+
   for index, value in enumerate(m_data):
-      if value == "moles" or value == "mol":
+      val = value.lower()
+      if val in ("moles", "mol"):
           moles = float(m_data[index - 1])
           print("mass is equal to", moles, "moles")
           break
-      elif value == "g" or value == "grams":
-        for key in gas_symbol:
-          if key in m_data:
-              moles = float(m_data[index - 1]) / (gas_symbol[key])
+      elif val in ("g", "grams", "kg", "kilograms"):
+          grams = float(m_data[index - 1])
+          if val in ("kg", "kilograms"):
+              grams *= 1000
+          if gas_name:
+              moles = grams / gas_symbol_lower[gas_name]
               print("mass is equal to", moles, "moles")
-              break
+          break
   time.sleep(1.5)
 
   def solver(pressure, volume, moles, temperature, R):

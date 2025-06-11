@@ -18,7 +18,34 @@ def calculator():
   print("Welcome to the ideal gas laws calculator!")
 
 #common gases with their atomic weights for grams to mole conversions
-  gas_symbol = {"H2":2.001,"O2":32,"N2":28,"F2":38,"Cl2": 110.9,"Br2":159.808,"I2": 253.808, "He": 8, "Ne": 20.1, "Ar": 39.95, "Kr":83.798, "Xe":131.293, "Rd":222, "Hydrogen":2.001,"Oxygen":32,"Nitrogen":28,"Flourine":38,"Chlorine": 110.9,"Bromine":159.808,"Iodine": 253.808, "Helium": 4, "Neon": 20.1, "Argon": 39.95, "Krypton":83.798, "Xenon":131.293, "Radon":222 }
+  gas_symbol = {
+      "H2": 2.016,
+      "O2": 32.0,
+      "N2": 28.014,
+      "F2": 37.998,
+      "Cl2": 70.90,
+      "Br2": 159.808,
+      "I2": 253.808,
+      "He": 4.003,
+      "Ne": 20.18,
+      "Ar": 39.95,
+      "Kr": 83.798,
+      "Xe": 131.293,
+      "Rn": 222,
+      "Hydrogen": 2.016,
+      "Oxygen": 32.0,
+      "Nitrogen": 28.014,
+      "Fluorine": 37.998,
+      "Chlorine": 70.90,
+      "Bromine": 159.808,
+      "Iodine": 253.808,
+      "Helium": 4.003,
+      "Neon": 20.18,
+      "Argon": 39.95,
+      "Krypton": 83.798,
+      "Xenon": 131.293,
+      "Radon": 222
+  }
 
 
 # This variable is used with loop below to target unwanted punctuation.

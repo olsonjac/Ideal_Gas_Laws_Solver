@@ -1,0 +1,23 @@
+import builtins
+import importlib
+import os
+import sys
+
+import pytest
+
+
+def test_calculator(monkeypatch, capsys):
+    question = (
+        "What volume of CO2 is needed to fill an 0.5 moles tank to a pressure of 150.0 atm at 27.0 Celsius?"
+    )
+    monkeypatch.setattr(builtins, "input", lambda _: question)
+    monkeypatch.setattr("time.sleep", lambda _ : None)
+
+    sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+    import Ideal_Gas_Laws_Calculator
+    importlib.reload(Ideal_Gas_Laws_Calculator)
+
+    Ideal_Gas_Laws_Calculator.calculator()
+    output = capsys.readouterr().out.strip().splitlines()
+    assert output[-1] == "The answer is 0.0821 Liters"

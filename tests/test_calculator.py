@@ -21,3 +21,20 @@ def test_calculator(monkeypatch, capsys):
     Ideal_Gas_Laws_Calculator.calculator()
     output = capsys.readouterr().out.strip().splitlines()
     assert output[-1] == "The answer is 0.0821 Liters"
+
+
+def test_calculator_concatenated_units(monkeypatch, capsys):
+    question = (
+        "What volume of CO2 is needed to fill an 0.5moles tank to a pressure of 150.0atm at 27C?"
+    )
+    monkeypatch.setattr(builtins, "input", lambda _: question)
+    monkeypatch.setattr("time.sleep", lambda _ : None)
+
+    sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+    import Ideal_Gas_Laws_Calculator
+    importlib.reload(Ideal_Gas_Laws_Calculator)
+
+    Ideal_Gas_Laws_Calculator.calculator()
+    output = capsys.readouterr().out.strip().splitlines()
+    assert output[-1] == "The answer is 0.0821 Liters"

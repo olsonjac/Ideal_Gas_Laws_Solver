@@ -12,13 +12,15 @@ def calculator():
 
   The user is prompted to paste a single sentence problem that contains the
   numeric values and units for pressure, volume, temperature and amount of gas
-  (either in moles or grams). Units must be separated from numbers by a space.
+  (either in moles or grams). Units can be written next to numbers (e.g. ``23C``)
+  or separated from them by a space.
   After parsing the text and converting values to standard units, the function
   prints the computed value of the one variable that was omitted from the
   question.
   """
 
   import time
+  import re
   # Ideal gas constant
   R = 0.0821
   #Conversion factor to go from Celsius to Kelvin
@@ -64,7 +66,11 @@ def calculator():
 #instructions for the program
   print("Copy and paste the Ideal Gas Law problem here that you want answered.")
 #this asks the user to paste their question into the console.
-  text = input("(Make sure there is a space between any units and numerical values)" )
+  text = input("(Units can be written with or without a space, e.g. 23C or 23 C)" )
+
+  # allow units to be attached to numbers, e.g. "23C" or "150atm"
+  unit_pattern = r"(\d+(?:\.\d+)?)(°C|C|Celsius|K|Kelvin|L|Liters|mL|milliliters|atm|atmospheres|moles|mol|g|grams)"
+  text = re.sub(unit_pattern, r"\1 \2", text)
 
 #This block removes any extraneous punctuation that would stop the script from identifying variables
   emptyString = " "
@@ -97,7 +103,7 @@ def calculator():
   time.sleep(1.5)
 #This looks for the temperature value and converts accordingly to Kelvin
   for index, value in enumerate(m_data):
-      if value == "°C" or value == "Celsius":
+      if value == "°C" or value == "Celsius" or value == "C":
           temperature = float(m_data[index - 1]) + k
           print("temperature is equal to", temperature, "Kelvin")
           break

@@ -1,5 +1,5 @@
 ### Ideal Gas law solver program. 
-# Pressure x Volume = moles x Rydberg's Constant x Temperature
+# Pressure x Volume = moles x ideal gas constant x Temperature
 
 # Example Problem: What volume of CO2 is needed to fill an 0.5 moles tank to a pressure of 150.0 atm at 27.0 Celsius? 
 # Example 2: If I have 4 moles of gas at a pressure of 5.6 atm and a volume of 12 Liters, what is the temperature?
@@ -8,10 +8,10 @@
 # Example 5: What volume is occupied by 5.03 grams of O2 at 28 °C and a pressure of 0.998 atm?
 
 def calculator():
-  import time 
-#Rydberg's constant
+  import time
+  #Ideal gas constant (L·atm/(mol·K))
   R = 0.0821
-#Conversion factor to go from Celsius to Kelvin
+  #Conversion factor to go from Celsius to Kelvin
   k = 273
 #kPa conversion factor
   kPa = 101.3

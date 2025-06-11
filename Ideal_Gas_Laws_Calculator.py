@@ -8,6 +8,16 @@
 # Example 5: What volume is occupied by 5.03 grams of O2 at 28 °C and a pressure of 0.998 atm?
 
 def calculator():
+  """Parse a pasted ideal gas law word problem and output the missing value.
+
+  The user is prompted to paste a single sentence problem that contains the
+  numeric values and units for pressure, volume, temperature and amount of gas
+  (either in moles or grams). Units must be separated from numbers by a space.
+  After parsing the text and converting values to standard units, the function
+  prints the computed value of the one variable that was omitted from the
+  question.
+  """
+
   import time
   #Ideal gas constant (L·atm/(mol·K))
   R = 0.0821
@@ -125,8 +135,14 @@ def calculator():
         else:
           moles = 0
   time.sleep(1.5)
-#This function checks for the single missing variable and then solves for it algebraically.        
+
   def solver():
+      """Solve for whichever ideal gas variable is missing.
+
+      The calculator sets any variable it cannot parse from the question to
+      zero. ``solver`` checks which one of pressure, volume, temperature or
+      moles is zero and rearranges ``PV = nRT`` to compute that value.
+      """
       if moles == 0:
           print("The answer is" ,(pressure * volume) / (R * temperature), "moles.")
       elif pressure == 0:

@@ -129,7 +129,7 @@ def calculator():
   def solver():
       if moles == 0:
           print("The answer is" ,(pressure * volume) / (R * temperature), "moles.")
-      if pressure == 0:
+      elif pressure == 0:
           print("The answer is", (moles * R * temperature) / volume, "atm")
       elif temperature == 0:
           print("The answer is", (pressure * volume) /(R * moles), "Kelvin")

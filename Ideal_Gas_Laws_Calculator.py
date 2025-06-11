@@ -74,69 +74,63 @@ def calculator():
 #this function splits the pasted question into individual objects in a list.
   m_data = text.split()
 
+  # Initialize variables in case they aren't found in the text
+  volume = 0
+  temperature = 0
+  pressure = 0
+  moles = 0
+
 #This takes the split up text from the user and removes all spaces 
 #and cleans up the list with attached indices.
 #The list is then searched for the corresponding units for each variable
 #the integer values are then assigned to the corresponding variables which are found one index behind the units.
   for index, value in enumerate(m_data):
       if value == "L" or value == "Liters":
-       global volume
-       volume = float(m_data[index - 1])
-       print("volume is equal to", volume, "Liters")
-       break
+          volume = float(m_data[index - 1])
+          print("volume is equal to", volume, "Liters")
+          break
       if value == "mL" or value == "milliliters":
-           volume = float(m_data[index - 1]) / 1000
-           print("volume is equal to", volume, "Liters")
-           break
-      else:
-            volume = 0
+          volume = float(m_data[index - 1]) / 1000
+          print("volume is equal to", volume, "Liters")
+          break
 
   time.sleep(1.5)
 #This looks for the temperature value and converts accordingly to Kelvin
   for index, value in enumerate(m_data):
       if value == "°C" or value == "Celsius":
-          global temperature
           temperature = float(m_data[index - 1]) + k
           print("temperature is equal to", temperature, "Kelvin")
-          break   
+          break
       if value == "K" or value == "Kelvin":
           temperature = float(m_data[index - 1])
           print("temperature is equal to", temperature, "Kelvin")
           break
-      else:
-          temperature = 0
 
   time.sleep(1.5)        
 #Identifies pressure value and converts to atm.
   for index, value in enumerate(m_data):
       if value == "atm" or value == "atmospheres":
-          global pressure
           pressure = float(m_data[index - 1])
           print("pressure is equal to", pressure, "atm")
           break
-      else:
-          pressure = 0
 
   time.sleep(1.5)
 
 # identifies the moles value and assigns it to the corresponding variable
   for index, value in enumerate(m_data):
-      global moles
       if value == "moles" or value == "mol":
           moles = float(m_data[index - 1])
           print("mass is equal to", moles, "moles")
-          break    
+          break
       elif value == "g" or value == "grams":
         for key in gas_symbol:
           if key in m_data:
               moles = float(m_data[index - 1]) / (gas_symbol[key])
               print("mass is equal to", moles, "moles")
               break
-        else:
-          moles = 0
   time.sleep(1.5)
 
-  def solver():
+  def solver(pressure, volume, moles, temperature, R):
       """Solve for whichever ideal gas variable is missing.
 
       The calculator sets any variable it cannot parse from the question to
@@ -149,7 +143,7 @@ def calculator():
           print("The answer is", (moles * R * temperature) / volume, "atm")
       elif temperature == 0:
           print("The answer is", (pressure * volume) /(R * moles), "Kelvin")
-      else:  
+      else:
             print("The answer is",(moles * R * temperature) / (pressure),"Liters")
-  solver()    
+  solver(pressure, volume, moles, temperature, R)
 calculator()

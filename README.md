@@ -6,6 +6,31 @@ Units may be written immediately after numbers (e.g. `23C`) or separated by a sp
 
 It will then solve for the missing variable.
 
+## Usage
+Run the calculator from the command line:
+
+```bash
+python Ideal_Gas_Laws_Calculator.py
+```
+
+After launching, paste an ideal gas law word problem at the prompt. For example:
+
+```text
+What volume of CO2 is needed to fill an 0.5 moles tank to a pressure of 150.0 atm at 27.0 Celsius?
+```
+
+The program parses the question, displays the values it detected and prints the answer:
+
+```text
+Welcome to the ideal gas laws calculator!
+Copy and paste the Ideal Gas Law problem here that you want answered.
+(Units can be written with or without a space, e.g. 23C or 23 C)
+temperature is equal to 300.0 Kelvin
+pressure is equal to 150.0 atm
+mass is equal to 0.5 moles
+The answer is 0.0821 Liters
+```
+
 ## Running Tests
 Install `pytest` and run the test suite from the repository root:
 

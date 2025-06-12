@@ -23,8 +23,8 @@ def calculator():
   import re
   # Ideal gas constant
   R = 0.0821
-  #Conversion factor to go from Celsius to Kelvin
-  k = 273
+#Conversion factor to go from Celsius to Kelvin
+  k = 273.15
 #kPa conversion factor
   kPa = 101.3
   print("Welcome to the ideal gas laws calculator!")
@@ -122,6 +122,10 @@ def calculator():
       val = value.lower()
       if val in ("atm", "atmospheres"):
           pressure = float(m_data[index - 1])
+          print("pressure is equal to", pressure, "atm")
+          break
+      if val in ("kpa", "kilopascals", "kilopascal"):
+          pressure = float(m_data[index - 1]) / kPa
           print("pressure is equal to", pressure, "atm")
           break
 

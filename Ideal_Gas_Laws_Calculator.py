@@ -166,4 +166,6 @@ def calculator():
       else:
             print("The answer is",(moles * R * temperature) / (pressure),"Liters")
   solver(pressure, volume, moles, temperature, R)
-calculator()
+
+if __name__ == "__main__":
+  calculator()

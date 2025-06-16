@@ -7,7 +7,7 @@
 # Example 4: What volume is occupied by 5.03 moles of O2 at 28 °C and a pressure of 0.998 atm?
 # Example 5: What volume is occupied by 5.03 grams of O2 at 28 °C and a pressure of 0.998 atm?
 
-def calculator():
+def calculator(pause=True):
   """Parse a pasted ideal gas law word problem and output the missing value.
 
   The user is prompted to paste a single sentence problem that contains the
@@ -17,6 +17,13 @@ def calculator():
   After parsing the text and converting values to standard units, the function
   prints the computed value of the one variable that was omitted from the
   question.
+
+  Parameters
+  ----------
+  pause : bool, optional
+      When ``True`` (default), pause for a short time between printing the
+      parsed values to make the output easier to read. Set to ``False`` to
+      disable the delays (useful for tests).
   """
 
   import time
@@ -103,7 +110,8 @@ def calculator():
           print("volume is equal to", volume, "Liters")
           break
 
-  time.sleep(1.5)
+  if pause:
+      time.sleep(1.5)
 #This looks for the temperature value and converts accordingly to Kelvin
   for index, value in enumerate(m_data):
       val = value.lower()
@@ -116,7 +124,8 @@ def calculator():
           print("temperature is equal to", temperature, "Kelvin")
           break
 
-  time.sleep(1.5)        
+  if pause:
+      time.sleep(1.5)
 #Identifies pressure value and converts to atm.
   for index, value in enumerate(m_data):
       val = value.lower()
@@ -129,7 +138,8 @@ def calculator():
           print("pressure is equal to", pressure, "atm")
           break
 
-  time.sleep(1.5)
+  if pause:
+      time.sleep(1.5)
 
 # identifies the moles value and assigns it to the corresponding variable
   gas_name = None
@@ -152,7 +162,8 @@ def calculator():
               moles = grams / gas_symbol_lower[gas_name]
               print("mass is equal to", moles, "moles")
           break
-  time.sleep(1.5)
+  if pause:
+      time.sleep(1.5)
 
   def solver(pressure, volume, moles, temperature, R):
       """Solve for whichever ideal gas variable is missing.

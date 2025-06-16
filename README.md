@@ -13,6 +13,10 @@ Run the calculator from the command line:
 python Ideal_Gas_Laws_Calculator.py
 ```
 
+The script pauses briefly between printing each detected value. When using the
+function programmatically, you can disable these delays by calling
+``calculator(pause=False)``.
+
 After launching, paste an ideal gas law word problem at the prompt. For example:
 
 ```text
